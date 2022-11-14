@@ -44,7 +44,7 @@ fn main() {
     println!("parallel elapsed: {}s", t0.elapsed().as_secs_f64());
 }
 
-fn json_to_csv_seq(batch: &Vec<String>, mut output: impl Write) -> io::Result<()> {
+fn json_to_csv_seq(batch: &Vec<String>, mut _output: impl Write) -> io::Result<()> {
     let _output_lines: Vec<_> = batch
         .iter()
         .map(|line| {
@@ -65,14 +65,14 @@ fn json_to_csv_seq(batch: &Vec<String>, mut output: impl Write) -> io::Result<()
         .collect();
 
     // for line in _output_lines {
-    //     output.write_all(&line)?;
+    //     _output.write_all(&line)?;
     // }
 
     Ok(())
 }
 
 
-fn json_to_csv_par(batch: &Vec<String>, mut output: impl Write) -> io::Result<()> {
+fn json_to_csv_par(batch: &Vec<String>, mut _output: impl Write) -> io::Result<()> {
     let _output_lines: Vec<_> = batch
         .par_iter()
         .map(|line| {
@@ -93,7 +93,7 @@ fn json_to_csv_par(batch: &Vec<String>, mut output: impl Write) -> io::Result<()
         .collect();
 
     // for line in _output_lines {
-    //     output.write_all(&line)?;
+    //     _output.write_all(&line)?;
     // }
 
     Ok(())
